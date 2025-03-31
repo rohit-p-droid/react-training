@@ -6,9 +6,21 @@ import { useState } from 'react'
 function App() {
   const [count, setCount] = useState(0);
 
+  // only update once 
+  // const incrementCounter = () => {
+  //   if(count < 20) {
+  //     setCount(count + 1);
+  //     setCount(count + 1);
+  //     setCount(count + 1);
+  //   }
+  // }
+
+  // updates multiple times
   const incrementCounter = () => {
     if(count < 20) {
-      setCount(count + 1);
+      setCount(prevCounter => prevCounter + 1);
+      setCount(prevCounter => prevCounter + 1);
+      setCount(prevCounter => prevCounter + 1);
     }
   }
 
