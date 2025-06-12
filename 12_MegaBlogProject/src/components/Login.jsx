@@ -15,7 +15,7 @@ const Login = () => {
     const loginHandler = async (data) => {
         setError("")
         try {
-            const session = await authService.login(data)
+            const session = await authService.loginUser(data)
             if (session) {
                 const userData = await authService.getCurrentUser()
                 if (userData) dispatch(authLogin(userData))

@@ -4,8 +4,11 @@ import { useNavigate } from 'react-router-dom'
 import authService from '../../appwrite/auth'
 import { login } from '../reducer/authSlice'
 import Input from './Input'
+import { useForm } from 'react-hook-form'
+import {Logo, Button} from './index'
+import { Link } from 'react-router-dom'
 
-const Signup = () => {
+const Signup = () => {    
     const navigate = useNavigate()
     const [error, setError] = useState("")
     const dispatch = useDispatch()
@@ -15,6 +18,7 @@ const Signup = () => {
         setError("")
         try {
             const userData = await authService.createAccount(data)
+            
             if (userData) {
                 const userData = await authService.getCurrentUser()
                 if (userData) dispatch(login(userData))
@@ -40,7 +44,7 @@ const Signup = () => {
                     <Link
                         to="/login"
                         className='font-medium text-primary transition-all duration-200 hover:underline'>
-                        Sing ip
+                        Sing in
                     </Link>
                 </p>
                 {error && <p className='text-red-600 mt-8 text-center'>

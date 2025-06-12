@@ -1,9 +1,10 @@
 import './App.css'
 import { useDispatch } from "react-redux"
 import authSevice from "../appwrite/auth"
-import { useEffect, useState, Outlet } from 'react'
+import { useEffect, useState } from 'react'
 import { login, logout } from './reducer/authSlice';
 import { Header, Footer } from "./components"
+import { Outlet } from 'react-router-dom';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -31,7 +32,7 @@ function App() {
           <Header />
           <main>
             <h1>Blog App</h1>
-            {/* <Outlet /> */}
+            <Outlet/>
           </main>
           <Footer />
         </div>

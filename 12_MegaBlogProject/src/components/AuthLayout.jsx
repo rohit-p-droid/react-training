@@ -6,18 +6,18 @@ const AuthLayout = ({children, authenticated=true}) => {
     const navigate = useNavigate()
     const [loader, setLoader] = useState(true)
     const authStatus = useSelector(state => state.authReducer.status)
-
+  
+  
     useEffect(() => {   
-        if(authenticated && authStatus !== authenticated) {
-            navigate("/login")
+        if(authenticated && authStatus !== authenticated) {            
+            // navigate("/login")
         } else if(!authenticated && authStatus !== authenticated) {
             navigate("/")
         }
         setLoader(false)
     }, [authStatus, navigate, authenticated])
-  return (
-    <div>AuthLayout</div>
-  )
+
+    return loader ? <h1>Loading...</h1> : <>{children}</>
 }
 
 export default AuthLayout
